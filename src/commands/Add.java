@@ -5,6 +5,10 @@ import java.util.Stack;
 
 public class Add implements Command {
 
+    private String Result = null;
+
+    public Add(){}
+
     @Override
     public Stack<Double> evaluate(Stack<Double> stack) {
         Double a, b;
@@ -23,14 +27,17 @@ public class Add implements Command {
             return stack;
         }
 
-        stack.push(a+b);
+        this.Result = stack.push(a+b).toString();
 
         return stack;
     }
 
     @Override
     public String getResult() {
-        //todo
-        return null;
+
+        if (this.Result == null)
+            return null;
+        else
+            return this.Result;
     }
 }

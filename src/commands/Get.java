@@ -5,15 +5,23 @@ import java.util.Stack;
 
 public class Get implements Command {
 
+    private String Result = null;
+
+    public Get(){}
+
     @Override
     public Stack<Double> evaluate(Stack<Double> stack) {
+        this.Result = stack.toString();
 
         return stack;
     }
 
     @Override
     public String getResult() {
-        //todo
-        return null;
+
+        if (this.Result == null)
+            return null;
+        else
+            return this.Result;
     }
 }
