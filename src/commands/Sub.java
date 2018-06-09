@@ -9,18 +9,27 @@ public class Sub implements Command {
         Double a, b;
         try {
             a = stack.pop();
-            b = stack.pop();
-
-            stack.push(a-b);
         } catch (EmptyStackException e){
             System.out.println("Empty stack cannot get value");
+            return stack;
         }
+
+        try {
+            b = stack.pop();
+        } catch (EmptyStackException e){
+            System.out.println("Empty stack cannot get value");
+            stack.push(a);
+            return stack;
+        }
+
+        stack.push(a-b);
 
         return stack;
     }
 
     @Override
     public String getResult() {
-        return 
+        //todo
+        return null;
     }
 }
