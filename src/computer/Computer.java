@@ -4,125 +4,62 @@ import commands.Command;
 import interpreter.Interpreter;
 import parser.Parser;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Queue;
+import java.util.List;
+
 
 public class Computer {
 
-    private Queue<Command> cmdQueue = new Queue<Command>() {
-        @Override
-        public boolean add(Command command) {
-            return false;
-        }
+    private Interpreter lastInterpreter = null;
 
-        @Override
-        public boolean offer(Command command) {
-            return false;
-        }
-
-        @Override
-        public Command remove() {
-            return null;
-        }
-
-        @Override
-        public Command poll() {
-            return null;
-        }
-
-        @Override
-        public Command element() {
-            return null;
-        }
-
-        @Override
-        public Command peek() {
-            return null;
-        }
-
-        @Override
-        public int size() {
-            return 0;
-        }
-
-        @Override
-        public boolean isEmpty() {
-            return false;
-        }
-
-        @Override
-        public boolean contains(Object o) {
-            return false;
-        }
-
-        @Override
-        public Iterator<Command> iterator() {
-            return null;
-        }
-
-        @Override
-        public Object[] toArray() {
-            return new Object[0];
-        }
-
-        @Override
-        public <T> T[] toArray(T[] a) {
-            return null;
-        }
-
-        @Override
-        public boolean remove(Object o) {
-            return false;
-        }
-
-        @Override
-        public boolean containsAll(Collection<?> c) {
-            return false;
-        }
-
-        @Override
-        public boolean addAll(Collection<? extends Command> c) {
-            return false;
-        }
-
-        @Override
-        public boolean removeAll(Collection<?> c) {
-            return false;
-        }
-
-        @Override
-        public boolean retainAll(Collection<?> c) {
-            return false;
-        }
-
-        @Override
-        public void clear() {
-
-        }
-    };
-
-
-    private void getCommandFromString(){
-
+    /**
+     * Parses String representation of commands into List of commands objects
+     *
+     * @param input String representation of commands
+     * @return List of commands objects
+     */
+    private List<Command> getCommandsFromString(String input){
+        Parser newParser = new Parser(input);
+        return newParser.parse();
     }
 
-    private void interpretCommand(){
+
+    /**
+     * Execute commands from given List of commands objects
+     *
+     * @param commands List of commands
+     */
+    private void interpretCommands(List<Command>commands){
         Interpreter newInterpreter = new Interpreter();
-        newInterpreter.evaluate();
+        lastInterpreter = newInterpreter;
+        newInterpreter.evaluate(commands);
     }
 
+
+    /**
+     * Execute commands from given String
+     *
+     * @param input String representation of commands to execute
+     */
     public void run(String input){
 
-        getCommandFromString();
-        interpretCommand();
-
+        List<Command> commands = getCommandsFromString(input);
+        interpretCommands(commands);
 
     }
 
-    public String getOutput(){
 
-        return "";
+    /**
+     * Returns a string representation of stack of last created Interpreter
+     *
+     * @throws getOutputException if there has not been any Interpreter yet
+     * @return String representation of stack of last Interpreter
+     */
+    public String getOutput(){
+        if(lastInterpreter == null){
+            throw new getOutputException();
+        }
+
+        return lastInterpreter.getOutput();
     }
 
 }
