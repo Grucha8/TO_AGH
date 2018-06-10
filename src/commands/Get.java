@@ -16,14 +16,14 @@ public class Get implements Command {
     /**
      * Getting the first number of the stack.
      *
-     * @param stack Stack form which we are getting number (not deleting).
-     * @return The same stack which was used as param
+     * @param stack Stack form which we are getting number.
+     * @return Stack without the top element.
      */
     @Override
     public Stack<Double> evaluate(Stack<Double> stack) {
 
         try {
-            this.Result = stack.peek().toString();
+            this.Result = stack.pop().toString();
         } catch (EmptyStackException e) {
             System.out.println("Empty stack.");
         }
