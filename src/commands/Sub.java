@@ -9,6 +9,12 @@ public class Sub implements Command {
 
     public Sub(){}
 
+    /**
+     * Subtraction of the top two elements.
+     *
+     * @param stack Stack from which we are getting elements.
+     * @return Updated stack with result of subtraction.
+     */
     @Override
     public Stack<Double> evaluate(Stack<Double> stack) {
         Double a, b;
@@ -22,7 +28,7 @@ public class Sub implements Command {
         try {
             b = stack.pop();
         } catch (EmptyStackException e){
-            System.out.println("Empty stack cannot get value");
+            System.out.println("No second element, cannot evaluate subtraction");
             stack.push(a);
             return stack;
         }
@@ -32,6 +38,11 @@ public class Sub implements Command {
         return stack;
     }
 
+    /**
+     * Returning result of the subtraction as a string.
+     *
+     * @return Result of subtraction.
+     */
     @Override
     public String getResult() {
         if (this.Result == null)
