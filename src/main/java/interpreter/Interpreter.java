@@ -1,6 +1,6 @@
-package interpreter;
+package main.java.interpreter;
 
-import commands.Command;
+import main.java.commands.Command;
 
 import java.util.List;
 import java.util.Stack;
@@ -10,7 +10,7 @@ public class Interpreter {
     private Stack<Double> evaluateStack = new Stack<Double>();
 
     /**
-     * Executes each command from commands
+     * Executes each command from main.java.commands
      *
      * @param commands
      */

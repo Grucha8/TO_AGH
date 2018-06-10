@@ -1,19 +1,19 @@
-package commands;
+package main.java.commands;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
 
-public class Add implements Command {
+public class Sub implements Command {
 
     private String Result = null;
 
-    public Add(){}
+    public Sub(){}
 
     /**
-     * Addition of the top two elements.
+     * Subtraction of the top two elements.
      *
      * @param stack Stack from which we are getting elements.
-     * @return Updated stack with the result of addition.
+     * @return Updated stack with result of subtraction.
      */
     @Override
     public Stack<Double> evaluate(Stack<Double> stack) {
@@ -28,24 +28,23 @@ public class Add implements Command {
         try {
             b = stack.pop();
         } catch (EmptyStackException e){
-            System.out.println("No second element, cannot evaluate addition");
+            System.out.println("No second element, cannot evaluate subtraction");
             stack.push(a);
             return stack;
         }
 
-        this.Result = stack.push(a+b).toString();
+        this.Result = stack.push(a-b).toString();
 
         return stack;
     }
 
     /**
-     * Returning result of addition as a string.
+     * Returning result of the subtraction as a string.
      *
-     * @return Result of addition.
+     * @return Result of subtraction.
      */
     @Override
     public String getResult() {
-
         if (this.Result == null)
             return null;
         else

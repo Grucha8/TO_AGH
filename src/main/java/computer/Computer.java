@@ -1,8 +1,8 @@
-package computer;
+package main.java.computer;
 
-import commands.Command;
-import interpreter.Interpreter;
-import parser.Parser;
+import main.java.commands.Command;
+import main.java.interpreter.Interpreter;
+import main.java.parser.Parser;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ public class Computer {
     private Interpreter lastInterpreter = null;
 
     /**
-     * Parses String representation of commands into List of commands objects
+     * Parses String representation of main.java.commands into List of main.java.commands objects
      *
-     * @param input String representation of commands
-     * @return List of commands objects
+     * @param input String representation of main.java.commands
+     * @return List of main.java.commands objects
      */
     private List<Command> getCommandsFromString(String input){
         Parser newParser = new Parser(input);
@@ -24,9 +24,9 @@ public class Computer {
 
 
     /**
-     * Execute commands from given List of commands objects
+     * Execute main.java.commands from given List of main.java.commands objects
      *
-     * @param commands List of commands
+     * @param commands List of main.java.commands
      */
     private void interpretCommands(List<Command>commands){
         Interpreter newInterpreter = new Interpreter();
@@ -36,9 +36,9 @@ public class Computer {
 
 
     /**
-     * Execute commands from given String
+     * Execute main.java.commands from given String
      *
-     * @param input String representation of commands to execute
+     * @param input String representation of main.java.commands to execute
      */
     public void run(String input){
 

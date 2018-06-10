@@ -1,11 +1,10 @@
-package commands;
+package main.java.commands;
 
-import commands.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Factory class for creating new commands
+ * Factory class for creating new main.java.commands
  *
  */
 public class CommandFactory {
@@ -13,7 +12,7 @@ public class CommandFactory {
     public CommandFactory(){}
 
     /**
-     * Main factory method to create a new command.
+     * main.java.Main factory method to create a new command.
      *
      * @param name Name of command to create.
      * @return New command object.

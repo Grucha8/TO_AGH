@@ -1,12 +1,12 @@
-package parser;
+package main.java.parser;
 
-import commands.Command;
-import commands.CommandFactory;
+import main.java.commands.Command;
+import main.java.commands.CommandFactory;
 
 import java.util.*;
 
 /**
- * Parses the given string into a list of commands.
+ * Parses the given string into a list of main.java.commands.
  * Each line of that string that doesn't contain only
  * whitespace characters is parsed as a command. Only
  * one command can be specified in a line. Input is NOT
@@ -36,7 +36,7 @@ public class Parser {
     }
 
     /**
-     * Constructs a parser that operates on a given string.
+     * Constructs a main.java.parser that operates on a given string.
      *
      * @param str The string to parse later.
      */
@@ -45,18 +45,19 @@ public class Parser {
     }
 
     /**
-     * Parses a string provided in the constructor into a list of commands.
+     * Parses a string provided in the constructor into a list of main.java.commands.
      *
      * @throws ParserException if the command is unknown or has wrong parameters.
-     * @return List of commands parsed from the string.
+     * @return List of main.java.commands parsed from the string.
      */
     public List<Command> parse() {
         CommandFactory commandFactory = new CommandFactory();
         List<Command> commands = new ArrayList<>();
 
         for(String line : stringToParse.split("\\r?\\n")) {
-            String parts[] = line.split("\\s+");
+            String parts[] = line.trim().split("\\s+");
             if(parts.length < 1) continue;
+            if(parts.length == 1 && parts[0].length() == 0) continue;
 
             String commandName = parts[0].toLowerCase();
             String normalizedCommandName = commandNameTranslations.get(commandName);

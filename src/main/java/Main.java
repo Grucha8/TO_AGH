@@ -1,4 +1,6 @@
-import computer.Computer;
+package main.java;
+
+import main.java.computer.Computer;
 
 public class Main {
 
